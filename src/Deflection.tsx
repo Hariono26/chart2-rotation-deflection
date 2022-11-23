@@ -40,8 +40,8 @@ const ChartZ: React.FC = () => {
   const options = {
     title: {
       text: "DEFLECTION",
-      left: "center",
-      top: "10%",
+      left: "5%",
+      // top: "10%",
     },
     xAxis: {
       type: "category",
@@ -69,6 +69,8 @@ const ChartZ: React.FC = () => {
     },
     grid: {
       show: true,
+      left: '5%',
+      width: '50%'
       // height: '90%',
       // containLabel: true,
       // bottom: '10%',
@@ -121,7 +123,7 @@ const ChartZ: React.FC = () => {
     ],
   };
 
-  return <ReactECharts option={options} />;
+  return <ReactECharts style={{ height: "45vh" }} option={options} />;
 };
 
 export default ChartZ;

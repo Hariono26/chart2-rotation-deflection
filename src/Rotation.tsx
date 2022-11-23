@@ -40,8 +40,8 @@ const ChartZ: React.FC = () => {
   const options = {
     title: {
       text: "ROTATION",
-      left: "center",
-      top: "10%",
+      left: "5%",
+      // top: "10%",
     },
     xAxis: {
       type: "category",
@@ -69,6 +69,8 @@ const ChartZ: React.FC = () => {
     },
     grid: {
       show: true,
+      left: '5%',
+      width: '50%'
       // height: '90%',
       // containLabel: true,
       // bottom: '10%',
@@ -116,13 +118,13 @@ const ChartZ: React.FC = () => {
             return { xAxis: `${coord.x}`, yAxis: coord.y };
           }),
           symbol: "circle",
-          symbolSize: 15,
+          symbolSize: 10,
         },
       },
     ],
   };
 
-  return <ReactECharts option={options} />;
+  return <ReactECharts style={{height: '45vh'}} option={options} />;
 };
 
 export default ChartZ;
