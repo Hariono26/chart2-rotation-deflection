@@ -14,7 +14,7 @@ const ChartZ: React.FC = () => {
   }, []);
 
   const asyncFetch = () => {
-    const url = "http://localhost:2000/all";
+    const url = "http://localhost:2500/all";
     fetch(url)
       .then((response) => response.json())
       .then((json) => {
@@ -39,7 +39,7 @@ const ChartZ: React.FC = () => {
 
   const options = {
     title: {
-      text: "DEFLECTION",
+      text: "ROTATION",
       left: "center",
       top: "10%",
     },
@@ -76,9 +76,10 @@ const ChartZ: React.FC = () => {
     },
     yAxis: {
       type: "value",
-      name: "Deflection [mm]",
-      max: 25,
-      interval: 25,
+      name: "Rotation [rad]",
+      max: 0.010,
+      min: -0.010,
+    //   interval: 10,
       nameLocation: "middle",
       nameGap: 50,
       nameTextStyle: {
@@ -114,8 +115,8 @@ const ChartZ: React.FC = () => {
           data: markPos.map((coord: { x: string; y: number }) => {
             return { xAxis: `${coord.x}`, yAxis: coord.y };
           }),
-          symbol: "triangle",
-          symbolSize: 25,
+          symbol: "circle",
+          symbolSize: 15,
         },
       },
     ],
