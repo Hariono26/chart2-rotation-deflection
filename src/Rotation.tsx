@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ReactECharts from "echarts-for-react";
 
-const ChartZ: React.FC = () => {
+const Rotation: React.FC = () => {
   //   const [data, setData] = useState([]);
   const [dataX, setDataX] = useState([]);
   const [dataY, setDataY] = useState([]);
   const [flag, setFlag] = useState([70, 190]);
   const [markPos, setMarkPos] = useState([]);
-  //   console.log(markPos);
+    // console.log(markPos);
 
   useEffect(() => {
     asyncFetch();
@@ -69,8 +69,8 @@ const ChartZ: React.FC = () => {
     },
     grid: {
       show: true,
-      left: '5%',
-      width: '50%'
+      left: "5%",
+      width: "50%",
       // height: '90%',
       // containLabel: true,
       // bottom: '10%',
@@ -79,9 +79,9 @@ const ChartZ: React.FC = () => {
     yAxis: {
       type: "value",
       name: "Rotation [rad]",
-      max: 0.010,
-      min: -0.010,
-    //   interval: 10,
+      max: 0.01,
+      min: -0.01,
+      //   interval: 10,
       nameLocation: "middle",
       nameGap: 50,
       nameTextStyle: {
@@ -96,6 +96,7 @@ const ChartZ: React.FC = () => {
         data: dataY,
         type: "line",
         smooth: true,
+        symbol: "none",
         markLine: {
           symbol: ["none", "none"],
           label: { show: false },
@@ -113,12 +114,14 @@ const ChartZ: React.FC = () => {
         },
         markPoint: {
           //this code below for set the mark
-          //   data: [{xAxis: '250', yAxis: -25 }],
-          data: markPos.map((coord: { x: string; y: number }) => {
-            return { xAxis: `${coord.x}`, yAxis: coord.y };
+          // data: [{ xAxis: "35.0", yAxis: -0.005 }],
+          data: markPos.map((coord: { x: number; y: number }) => {
+            let float = coord.x.toFixed(1)
+            if(float.charAt(float.length - 1) === '0') float = coord.x.toFixed(0); 
+            return { xAxis: float, yAxis: coord.y };
           }),
           symbol: "circle",
-          symbolSize: 10,
+          symbolSize: 12,
         },
       },
     ],
@@ -127,4 +130,4 @@ const ChartZ: React.FC = () => {
   return <ReactECharts style={{height: '45vh'}} option={options} />;
 };
 
-export default ChartZ;
+export default Rotation;

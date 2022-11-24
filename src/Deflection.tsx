@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactECharts from "echarts-for-react";
 
-const ChartZ: React.FC = () => {
+const Deflection: React.FC = () => {
   //   const [data, setData] = useState([]);
   const [dataX, setDataX] = useState([]);
   const [dataY, setDataY] = useState([]);
@@ -95,6 +95,7 @@ const ChartZ: React.FC = () => {
         data: dataY,
         type: "line",
         smooth: true,
+        symbol: 'none',
         markLine: {
           symbol: ["none", "none"],
           label: { show: false },
@@ -126,4 +127,4 @@ const ChartZ: React.FC = () => {
   return <ReactECharts style={{ height: "45vh" }} option={options} />;
 };
 
-export default ChartZ;
+export default Deflection;
